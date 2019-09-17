@@ -1,0 +1,15 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: APPNAME
+  namespace: NAMESPACE
+spec:
+  rules:
+  - host: DOMAIN
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: APPNAME
+          servicePort: 80

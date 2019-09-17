@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: APPNAME
+  namespace: NAMESPACE
+  labels:
+    app: APPNAME
+spec:
+  replicas: REPLICAS
+  minReadySeconds: MINREADYSECONDS
+  revisionHistoryLimit: REVISIONHISTORYLIMIT
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: APPNAME
+  template:
+    metadata:
+      labels:
+        app: APPNAME
+    spec:
+      imagePullSecrets:
+        - name: aliyun-secret
+      containers:
+      - name: APPNAME
+        image: IMAGE_PATH
+        imagePullPolicy: Always
+        env:
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+        ports:
+        - containerPort: PORT
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "250m"
+          limits:
+            memory: "2048Mi"
+            cpu: "500m"

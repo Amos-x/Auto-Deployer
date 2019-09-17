@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+    name: PV_NAME
+    namespace: default
+spec:
+    capacity:
+      storage: 5Gi
+    accessModes:
+      - ReadWriteMany
+# 这里要注意，这里有三种回收方式，如果做共享数据，只能用retain，其他的回收方式会导致数据被删除
+#   Retain – 手动重新使用
+#   Recycle – 基本的删除操作 (“rm -rf /thevolume/*”)
+#   Delete – 关联的后端存储卷一起删除，后端存储例如AWS EBS, GCE PD或OpenStack Cinder
+    persistentVolumeReclaimPolicy: Retain
+    storageClassName: nfs
+    nfs:
+      server: 172.18.196.243
+      path: /mnt/wwwroot/source

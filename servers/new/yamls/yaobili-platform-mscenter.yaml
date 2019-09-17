@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: APPNAME
+  namespace: NAMESPACE
+  labels:
+    app: APPNAME
+spec:
+  replicas: REPLICAS
+  revisionHistoryLimit: REVISIONHISTORYLIMIT
+  selector:
+    matchLabels:
+      app: APPNAME
+  serviceName: APPNAME
+  template:
+    metadata:
+      labels:
+        app: APPNAME
+    spec:
+      imagePullSecrets:
+        - name: aliyun-secret
+      containers:
+      - name: APPNAME
+        image: IMAGE_PATH
+        imagePullPolicy: Always
+        command: ["sh","-c"]
+        args:
+        - if [ $replicas = 1 ]; then EUREKA_URL_LIST="http://$MY_POD_NAME.$MY_SERVICE_NAME.$MY_POD_NAME_SPACE.svc.cluster.local:10001/eureka/"; else num=`expr $replicas - 1`; for i in `seq 0 $num`; do temp="http://$MY_SERVICE_NAME-$i.$MY_SERVICE_NAME.$MY_POD_NAME_SPACE.svc.cluster.local:10001/eureka/,"; EUREKA_URL_LIST="$EUREKA_URL_LIST$temp"; done; fi; export EUREKA_URL_LIST=${EUREKA_URL_LIST%*,}; java -cp /app/resources:/app/classes:/app/libs/* com.yaobili.platform.mscenter.PlatformMscenterApp
+        env:
+          - name: MY_POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+          - name: MY_POD_NAME_SPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: MY_SERVICE_NAME
+            value: "APPNAME"
+          - name: replicas
+            value: "REPLICAS"
+        ports:
+        - containerPort: PORT
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: APPNAME
+spec:
+  selector:
+    app: APPNAME
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: PORT
