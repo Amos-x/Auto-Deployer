@@ -36,6 +36,13 @@ spec:
                 fieldPath: status.podIP
         ports:
         - containerPort: PORT
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "50m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
         volumeMounts:
          - name: nfs-source
            mountPath: /mnt/wwwroot/source/

@@ -38,17 +38,6 @@ class Config:
     # 默认容器副本数量
     REPLICAS = 1
 
-    # pre 环境配置
-    # PRE_K8S_MASTER = '172.18.196.238:65503'
-    # PRE_NFS_SERVER = '172.18.196.238'
-    # PRE_REGISTRY_NAMESPACE = 'pre_images'
-    # PRE_TREAFIK_DOMAINS = {
-    #     'yaobili-platform-admin': 'pre.admin.yaobili.com',
-    #     'yaobili-platform-gateway': 'pre.api.yaobili.com',
-    #     'yaobili-platform-mscenter': 'pre.eureka.yaobili.com',
-    #     'yaobili-business-device': 'pre.device.yaobili.com'
-    # }
-
     K8S_MASTER = {
         'pre': '172.18.196.238:65503',
         'prod': '172.18.46.101'
@@ -77,16 +66,6 @@ class Config:
             'yaobili-platform-mscenter': 'eureka.yaobili.com'
         }
     }
-
-    # prod 环境配置
-    # PROD_K8S_MASTER = '172.18.46.101'
-    # PROD_NFS_SERVER = '172.18.196.243'
-    # PROD_REGISTRY_NAMESPACE = 'product_images'
-    # PROD_TREAFIK_DOMAINS = {
-    #     'yaobili-platform-admin': 'admin.yaobili.com',
-    #     'yaobili-platform-gateway': 'api.yaobili.com',
-    #     'yaobili-platform-mscenter': 'eureka.yaobili.com'
-    # }
 
     # 服务端口映射关系
     SERVICE_PORTS = {
