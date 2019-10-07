@@ -25,6 +25,7 @@ spec:
     spec:
       imagePullSecrets:
         - name: aliyun-secret
+      restartPolicy: OnFailure
       containers:
       - name: APPNAME
         image: IMAGE_PATH
