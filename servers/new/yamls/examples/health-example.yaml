@@ -44,8 +44,8 @@ spec:
             port: PORT
           initialDelaySeconds: 60
           timeoutSeconds: 5
-          periodSeconds: 30
-          failureThreshold: 5
+          periodSeconds: 20
+          failureThreshold: 3
         readinessProbe:
           httpGet:
             scheme: HTTP
@@ -53,5 +53,5 @@ spec:
             port: PORT
           initialDelaySeconds: 60
           timeoutSeconds: 5
-          periodSeconds: 30
-          failureThreshold: 5
+          periodSeconds: 5
+          failureThreshold: 3

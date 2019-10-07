@@ -31,8 +31,8 @@ class Config:
     YAML_TEMPLATE = os.path.join(TEMPLATE_DIR,'spring-svc.yaml')
     TMP_DIR = os.path.join(BASE_DIR,'tmp')
 
-    # 容器启动后，需要最小等待多久才能作为可用容器，单位：秒
-    MINREADYSECONDS = 30
+    # 新容器启动后，就绪后，观察多潮时间才认为是可用的，并删除旧POD，单位：秒
+    MINREADYSECONDS = 60
     # 容器最多保存多少个历史版本
     REVISIONHISTORYLIMIT = 3
     # 默认容器副本数量
