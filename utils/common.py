@@ -9,12 +9,12 @@ import subprocess
 import re
 import psutil
 import pexpect
+import hashlib
 
 
 # 本地运行shell命令
 def exec_shell(command):
-    response = subprocess.run(command, shell=True, universal_newlines=True)
-    response.check_returncode()
+    subprocess.run(command, shell=True, universal_newlines=True, check=True)
 
 
 # 获取执行命令结果
@@ -75,6 +75,11 @@ class FileModify(object):
     def content(self):
         with open(self.file_path,'r', encoding='utf-8') as f:
             return f.read()
+
+    # 返回文件md5值
+    def get_md5(self):
+        with open(self.file_path, 'rb') as f:
+            return hashlib.md5(f.read()).hexdigest()
 
 
 # 获取网卡名及ip
