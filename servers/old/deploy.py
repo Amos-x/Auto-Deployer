@@ -71,7 +71,7 @@ class Deploy(object):
         pid_path = self.get_pid_path(service)
         service_path = self.get_service_path(service)
         start_parameters = (CONFIG.JAVA_START_PARAMETERS if self.env == 'prod' else CONFIG.JAVA_START_PARAMETERS_TEST)
-        deploy_env = (self.env.rstrip('.old') if 'old' in self.env else self.env)
+        deploy_env = self.env.split('.')[0]
         config_ip, config_port = self.get_config_server_host()
         os.chdir(BASE_DIR)
         if service in ('yaobili-platform-mscenter', 'yaobili-platform-config'):
