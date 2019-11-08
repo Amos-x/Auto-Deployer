@@ -75,17 +75,17 @@ class Config:
         # 'pre.old': {'172.18.91.248': 'all'},
         'pre.new': {
             '172.18.46.108': ('yaobili-business-advertisement', 'yaobili-business-search', 'yaobili-business-refund',
-                             'yaobili-business-map', 'yaobili-business-companyerp', 'yaobili-business-medickeeper',
-                             'yaobili-business-operations', 'yaobili-business-rvmstrategy','yaobili-business-company',
-                             'yaobili-business-retail', 'yaobili-business-alipayment', 'yaobili-business-goods',
-                             'yaobili-platform-auth', 'yaobili-business-device', 'yaobili-platform-mscenter',
-                             'yaobili-platform-config'),
+                              'yaobili-business-map', 'yaobili-business-companyerp', 'yaobili-business-medickeeper',
+                              'yaobili-business-operations', 'yaobili-business-rvmstrategy','yaobili-business-company',
+                              'yaobili-business-retail', 'yaobili-business-alipayment', 'yaobili-business-goods',
+                              'yaobili-platform-auth', 'yaobili-business-device', 'yaobili-platform-mscenter',
+                              'yaobili-platform-config'),
             '172.18.46.109': ('yaobili-business-vmerp', 'yaobili-business-order', 'yaobili-business-miniprogram',
-                             'yaobili-business-pushcenter', 'yaobili-business-sweepstakes', 'yaobili-business-cart',
-                             'yaobili-business-wallet', 'yaobili-business-xwpayment', 'yaobili-business-wechatpayment',
-                             'yaobili-business-paygateway', 'yaobili-business-o2oerp', 'yaobili-business-delivery',
-                             'yaobili-business-saleagent', 'yaobili-platform-task', 'yaobili-gateway-web',
-                             'yaobili-business-elecompany', 'others')
+                              'yaobili-business-pushcenter', 'yaobili-business-sweepstakes', 'yaobili-business-cart',
+                              'yaobili-business-wallet', 'yaobili-business-xwpayment', 'yaobili-business-wechatpayment',
+                              'yaobili-business-paygateway', 'yaobili-business-o2oerp', 'yaobili-business-delivery',
+                              'yaobili-business-saleagent', 'yaobili-platform-task', 'yaobili-gateway-web',
+                              'yaobili-business-elecompany', 'others')
         },
 
 

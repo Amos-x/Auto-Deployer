@@ -24,8 +24,10 @@ class OldServerDeploy(object):
     def __init__(self, services, env, action):
         self.services = services
         self.env = env
+        print(self.env)
         self.action = action
         self.env_config = CONFIG.ENV_SETTINGS.get(self.env)
+        print(self.env_config)
         self._exception = {}
         if self.action == 'install':
             self.build()
